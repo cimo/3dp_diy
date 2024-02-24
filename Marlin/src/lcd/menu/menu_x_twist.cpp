@@ -32,6 +32,14 @@
 #include "../../gcode/queue.h"
 #include "../../module/probe.h"
 
+// cimo +
+#if HAS_GRAPHICAL_TFT
+  #include "../tft/tft.h"
+  #if ENABLED(TOUCH_SCREEN)
+    #include "../tft/touch.h"
+  #endif
+#endif
+
 #ifndef XATC_Y_POSITION
   #define XATC_Y_POSITION ((probe.max_y() - probe.min_y())/2)
 #endif

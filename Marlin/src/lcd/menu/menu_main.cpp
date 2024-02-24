@@ -238,10 +238,11 @@ void menu_configuration();
 
 void menu_main() {
   const bool busy = printingIsActive()
-    #if HAS_MEDIA
+    // cimo +
+    /*#if HAS_MEDIA
       , card_detected = card.isMounted()
       , card_open = card_detected && card.isFileOpen()
-    #endif
+    #endif*/
   ;
 
   START_MENU();
@@ -277,7 +278,8 @@ void menu_main() {
     #endif
   }
   else {
-    #if ALL(HAS_MEDIA, MEDIA_MENU_AT_TOP)
+    // cimo +
+    /*#if ALL(HAS_MEDIA, MEDIA_MENU_AT_TOP)
       // BEGIN MEDIA MENU
       #if ENABLED(MENU_ADDAUTOSTART)
         ACTION_ITEM(MSG_RUN_AUTO_FILES, card.autofile_begin); // Run Auto Files
@@ -316,7 +318,7 @@ void menu_main() {
         #endif
       }
       // END MEDIA MENU
-    #endif
+    #endif*/
 
     if (TERN0(MACHINE_CAN_PAUSE, printingIsPaused()))
       ACTION_ITEM(MSG_RESUME_PRINT, ui.resume_print);
@@ -394,7 +396,8 @@ void menu_main() {
       GCODES_ITEM(MSG_SWITCH_PS_ON, F("M80"));
   #endif
 
-  #if HAS_MEDIA && DISABLED(MEDIA_MENU_AT_TOP)
+  // cimo +
+  /*#if HAS_MEDIA && DISABLED(MEDIA_MENU_AT_TOP)
     // BEGIN MEDIA MENU
     #if ENABLED(MENU_ADDAUTOSTART)
       ACTION_ITEM(MSG_RUN_AUTO_FILES, card.autofile_begin); // Run Auto Files
@@ -433,7 +436,7 @@ void menu_main() {
       #endif
     }
     // END MEDIA MENU
-  #endif
+  #endif*/
 
   #if HAS_SERVICE_INTERVALS
     static auto _service_reset = [](const int index) {

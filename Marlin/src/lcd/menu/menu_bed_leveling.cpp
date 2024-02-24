@@ -277,7 +277,8 @@ void menu_bed_leveling() {
   //
   // Mesh Bed Leveling Z-Offset
   //
-  #if ENABLED(MESH_BED_LEVELING)
+  // cimo +
+  /*#if ENABLED(MESH_BED_LEVELING)
     #if WITHIN(PROBE_OFFSET_ZMIN, -9, 9)
       #define LCD_Z_OFFSET_TYPE float43    // Values from -9.000 to +9.000
     #else
@@ -294,16 +295,17 @@ void menu_bed_leveling() {
 
   #if ENABLED(PROBE_OFFSET_WIZARD)
     SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
-  #endif
+  #endif*/
 
   #if ENABLED(LCD_BED_TRAMMING)
     SUBMENU(MSG_BED_TRAMMING, _lcd_bed_tramming);
   #endif
 
-  #if ENABLED(EEPROM_SETTINGS)
+  // cimo +
+  /*#if ENABLED(EEPROM_SETTINGS)
     ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings);
     ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
-  #endif
+  #endif*/
   END_MENU();
 }
 

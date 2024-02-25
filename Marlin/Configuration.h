@@ -1597,7 +1597,7 @@
  *     O-- FRONT --+
  */
 // cimo +
-#define NOZZLE_TO_PROBE_OFFSET { 21.20, -6.4, 0 } //-2.7 - / -0.03, 0.07 /
+#define NOZZLE_TO_PROBE_OFFSET { 21.20, -6.4, 0 } // -2.7 - -0.07 = -2.63 /
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
@@ -2080,7 +2080,7 @@
  * Useful to retract or move the Z probe out of the way.
  */
 // cimo +
-#define EVENT_GCODE_AFTER_G29 "M500\nG28XY" //"G1 Z10 F12000\nG1 X15 Y330\nG1 Z0.5\nG1 Z10"
+#define EVENT_GCODE_AFTER_G29 "M500\nM300 P200 S260\nG28XY"
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable one of
@@ -2409,8 +2409,8 @@
 #define EEPROM_CHITCHAT       // Give feedback on EEPROM commands. Disable to save flash.
 #define EEPROM_BOOT_SILENT    // Keep M503 quiet and only give errors during first load
 #if ENABLED(EEPROM_SETTINGS)
-  //#define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
   // cimo +
+  #define EEPROM_AUTO_INIT  // Init EEPROM automatically on any errors.
   #define EEPROM_INIT_NOW   // Init EEPROM on first boot after a new build.
 #endif
 
@@ -3480,14 +3480,15 @@
 
   //#define DISABLE_ENCODER         // Disable the click encoder, if any
 
-  #define TOUCH_SCREEN_CALIBRATION
+  // cimo +
+  //#define TOUCH_SCREEN_CALIBRATION
 
   // cimo +
-  //#define TOUCH_CALIBRATION_X 16718
-  //#define TOUCH_CALIBRATION_Y -11233
-  //#define TOUCH_OFFSET_X      -21
-  //#define TOUCH_OFFSET_Y      334
-  //#define TOUCH_ORIENTATION   TOUCH_LANDSCAPE
+  #define TOUCH_CALIBRATION_X 16718
+  #define TOUCH_CALIBRATION_Y -11233
+  #define TOUCH_OFFSET_X      -21
+  #define TOUCH_OFFSET_Y      334
+  #define TOUCH_ORIENTATION   TOUCH_LANDSCAPE
 
   #if ALL(TOUCH_SCREEN_CALIBRATION, EEPROM_SETTINGS)
     #define TOUCH_CALIBRATION_AUTO_SAVE // Auto save successful calibration values to EEPROM

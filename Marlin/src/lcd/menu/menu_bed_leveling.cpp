@@ -243,6 +243,12 @@ void menu_bed_leveling() {
   START_MENU();
   BACK_ITEM(MSG_MOTION);
 
+  // cimo +
+  if (is_homed) {
+    ui.return_to_status();
+    ui.refresh();
+  }
+
   // Auto Home if not using manual probing
   #if NONE(PROBE_MANUALLY, MESH_BED_LEVELING)
     if (!is_homed) GCODES_ITEM(MSG_AUTO_HOME, FPSTR(G28_STR));
@@ -262,7 +268,8 @@ void menu_bed_leveling() {
   #endif
 
   // Homed and leveling is valid? Then leveling can be toggled.
-  if (is_homed && is_valid) {
+  // cimo +
+  if (is_valid) {
     bool show_state = planner.leveling_active;
     EDIT_ITEM(bool, MSG_BED_LEVELING, &show_state, _lcd_toggle_bed_leveling);
   }

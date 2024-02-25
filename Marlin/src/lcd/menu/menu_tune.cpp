@@ -214,6 +214,14 @@ void menu_tune() {
     #endif
   #endif
 
+  // cimo +
+  #if ENABLED(LCD_BED_LEVELING) || (HAS_LEVELING && DISABLED(SLIM_LCD_MENUS))
+    if (leveling_is_valid()) {
+      bool show_state = planner.leveling_active;
+      EDIT_ITEM(bool, MSG_BED_LEVELING, &show_state, _lcd_toggle_bed_leveling);
+    }
+  #endif
+
   //
   // Babystep X:
   // Babystep Y:

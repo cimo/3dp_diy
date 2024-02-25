@@ -244,10 +244,10 @@ void menu_bed_leveling() {
   BACK_ITEM(MSG_MOTION);
 
   // cimo +
-  if (is_homed) {
+  /*if (is_homed) {
     ui.return_to_status();
     ui.refresh();
-  }
+  }*/
 
   // Auto Home if not using manual probing
   #if NONE(PROBE_MANUALLY, MESH_BED_LEVELING)

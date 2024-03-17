@@ -248,6 +248,13 @@ void menu_main() {
   START_MENU();
   BACK_ITEM(MSG_INFO_SCREEN);
 
+  // cimo +
+  #if ENABLED(LCD_INFO_MENU)
+    if (!busy) {
+      SUBMENU(MSG_INFO_MENU, menu_info);
+    }
+  #endif
+
   #if HAS_MEDIA && !defined(MEDIA_MENU_AT_TOP) && !HAS_ENCODER_WHEEL
     #define MEDIA_MENU_AT_TOP
   #endif
@@ -374,10 +381,6 @@ void menu_main() {
         SUBMENU(MSG_CUSTOM_COMMANDS, custom_menus_main);
       #endif
     }
-  #endif
-
-  #if ENABLED(LCD_INFO_MENU)
-    SUBMENU(MSG_INFO_MENU, menu_info);
   #endif
 
   #if ANY(LED_CONTROL_MENU, CASE_LIGHT_MENU)

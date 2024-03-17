@@ -473,22 +473,24 @@ void menu_motion() {
   BACK_ITEM(MSG_MAIN_MENU);
 
   //
-  // Move Axis
-  //
-  if (TERN1(DELTA, all_axes_homed()))
-    SUBMENU(MSG_MOVE_AXIS, menu_move);
-
-  //
   // Auto Home
   //
-  #if ENABLED(INDIVIDUAL_AXIS_HOMING_SUBMENU)
+  // cimo +
+  /*#if ENABLED(INDIVIDUAL_AXIS_HOMING_SUBMENU)
     SUBMENU(MSG_HOMING, menu_home);
   #else
     GCODES_ITEM(MSG_AUTO_HOME, FPSTR(G28_STR));
     #if ENABLED(INDIVIDUAL_AXIS_HOMING_MENU)
       MAIN_AXIS_MAP(_HOME_ITEM);
     #endif
-  #endif
+  #endif*/
+
+  //
+  // Move Axis
+  //
+  // cimo +
+  /*if (TERN1(DELTA, all_axes_homed()))
+    SUBMENU(MSG_MOVE_AXIS, menu_move);*/
 
   //
   // M493 - Fixed-Time Motion
@@ -582,7 +584,8 @@ void menu_motion() {
   //
   // Disable Steppers
   //
-  GCODES_ITEM(MSG_DISABLE_STEPPERS, F("M84"));
+  // cimo +
+  //GCODES_ITEM(MSG_DISABLE_STEPPERS, F("M84"));
 
   END_MENU();
 }

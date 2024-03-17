@@ -237,22 +237,18 @@
  *    Save Settings       (Req: EEPROM_SETTINGS)
  */
 void menu_bed_leveling() {
-  const bool is_homed = all_axes_trusted(),
-             is_valid = leveling_is_valid();
+  // cimo +
+  const bool is_homed = all_axes_trusted();
+  const bool is_valid = leveling_is_valid();
 
   START_MENU();
   BACK_ITEM(MSG_MOTION);
 
-  // cimo +
-  /*if (is_homed) {
-    ui.return_to_status();
-    ui.refresh();
-  }*/
-
   // Auto Home if not using manual probing
-  #if NONE(PROBE_MANUALLY, MESH_BED_LEVELING)
+  // cimo +
+  /*#if NONE(PROBE_MANUALLY, MESH_BED_LEVELING)
     if (!is_homed) GCODES_ITEM(MSG_AUTO_HOME, FPSTR(G28_STR));
-  #endif
+  #endif*/
 
   // Level Bed
   #if ANY(PROBE_MANUALLY, MESH_BED_LEVELING)
@@ -284,8 +280,7 @@ void menu_bed_leveling() {
   //
   // Mesh Bed Leveling Z-Offset
   //
-  // cimo +
-  /*#if ENABLED(MESH_BED_LEVELING)
+  #if ENABLED(MESH_BED_LEVELING)
     #if WITHIN(PROBE_OFFSET_ZMIN, -9, 9)
       #define LCD_Z_OFFSET_TYPE float43    // Values from -9.000 to +9.000
     #else
@@ -294,25 +289,28 @@ void menu_bed_leveling() {
     EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_MESH_Z_OFFSET, &bedlevel.z_offset, PROBE_OFFSET_ZMIN, PROBE_OFFSET_ZMAX);
   #endif
 
-  #if ENABLED(BABYSTEP_ZPROBE_OFFSET)
-    SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
-  #elif HAS_BED_PROBE
-    EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, PROBE_OFFSET_ZMIN, PROBE_OFFSET_ZMAX);
-  #endif
-
-  #if ENABLED(PROBE_OFFSET_WIZARD)
-    SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
-  #endif*/
-
   #if ENABLED(LCD_BED_TRAMMING)
     SUBMENU(MSG_BED_TRAMMING, _lcd_bed_tramming);
   #endif
+
+  // cimo +
+  /*#if ENABLED(BABYSTEP_ZPROBE_OFFSET)
+    SUBMENU(MSG_ZPROBE_ZOFFSET, lcd_babystep_zoffset);
+  #elif HAS_BED_PROBE
+    EDIT_ITEM(LCD_Z_OFFSET_TYPE, MSG_ZPROBE_ZOFFSET, &probe.offset.z, PROBE_OFFSET_ZMIN, PROBE_OFFSET_ZMAX);
+  #endif*/
+
+  // cimo +
+  /*#if ENABLED(PROBE_OFFSET_WIZARD)
+    SUBMENU(MSG_PROBE_WIZARD, goto_probe_offset_wizard);
+  #endif*/
 
   // cimo +
   /*#if ENABLED(EEPROM_SETTINGS)
     ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings);
     ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
   #endif*/
+
   END_MENU();
 }
 

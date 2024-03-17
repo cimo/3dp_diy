@@ -50,7 +50,8 @@
 #endif
 
 #if HAS_BED_PROBE
-  #include "../../module/probe.h"
+  // cimo +
+  //#include "../../module/probe.h"
   #if ENABLED(BLTOUCH)
     #include "../../feature/bltouch.h"
   #endif
@@ -397,7 +398,8 @@ void menu_advanced_settings();
 
 #endif
 
-#if HAS_PREHEAT && DISABLED(SLIM_LCD_MENUS)
+// cimo +
+/*#if HAS_PREHEAT && DISABLED(SLIM_LCD_MENUS)
 
   void _menu_configuration_preheat_settings() {
     #define _MIN_ITEM(N) HEATER_##N##_MINTEMP,
@@ -424,7 +426,7 @@ void menu_advanced_settings();
     END_MENU();
   }
 
-#endif
+#endif*/
 
 #if ENABLED(CUSTOM_MENU_CONFIG)
 
@@ -650,10 +652,11 @@ void menu_configuration() {
   #endif
 
   // Preheat configurations
-  #if HAS_PREHEAT && DISABLED(SLIM_LCD_MENUS)
+  // cimo +
+  /*#if HAS_PREHEAT && DISABLED(SLIM_LCD_MENUS)
     for (uint8_t m = 0; m < PREHEAT_COUNT; ++m)
       SUBMENU_N_f(m, ui.get_preheat_label(m), MSG_PREHEAT_M_SETTINGS, _menu_configuration_preheat_settings);
-  #endif
+  #endif*/
 
   #if ENABLED(SOUND_MENU_ITEM)
     EDIT_ITEM(bool, MSG_SOUND, &ui.sound_on, []{ ui.chirp(); });
@@ -665,12 +668,26 @@ void menu_configuration() {
     SUBMENU(MSG_DEBUG_MENU, menu_debug);
   #endif
 
+  // cimo +
+  STATIC_ITEM_F(F("---"), SS_LEFT);
+
+  // cimo +
   #if ENABLED(EEPROM_SETTINGS)
     ACTION_ITEM(MSG_STORE_EEPROM, ui.store_settings);
     if (!busy) ACTION_ITEM(MSG_LOAD_EEPROM, ui.load_settings);
   #endif
 
+  // cimo +
   if (!busy) ACTION_ITEM(MSG_RESTORE_DEFAULTS, ui.reset_settings);
+
+  // cimo +
+  #if ENABLED(EEPROM_SETTINGS) && DISABLED(SLIM_LCD_MENUS)
+    CONFIRM_ITEM(MSG_INIT_EEPROM,
+      MSG_BUTTON_INIT, MSG_BUTTON_CANCEL,
+      ui.init_eeprom, nullptr,
+      GET_TEXT_F(MSG_INIT_EEPROM), (const char *)nullptr, F("?")
+    );
+  #endif
 
   END_MENU();
 }

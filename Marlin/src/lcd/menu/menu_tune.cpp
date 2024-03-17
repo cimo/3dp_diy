@@ -214,14 +214,6 @@ void menu_tune() {
     #endif
   #endif
 
-  // cimo +
-  #if ENABLED(LCD_BED_LEVELING) || (HAS_LEVELING && DISABLED(SLIM_LCD_MENUS))
-    if (leveling_is_valid()) {
-      bool show_state = planner.leveling_active;
-      EDIT_ITEM(bool, MSG_BED_LEVELING, &show_state, _lcd_toggle_bed_leveling);
-    }
-  #endif
-
   //
   // Babystep X:
   // Babystep Y:
@@ -237,6 +229,19 @@ void menu_tune() {
     #else
       SUBMENU_N(Z_AXIS, MSG_BABYSTEP_N, lcd_babystep_z);
     #endif
+  #endif
+
+  // cimo +
+  STATIC_ITEM_F(F("- Info"), SS_LEFT);
+
+  #if ENABLED(LCD_BED_LEVELING) || (HAS_LEVELING && DISABLED(SLIM_LCD_MENUS))
+    if (planner.leveling_active) {
+      PSTRING_ITEM(MSG_BED_LEVELING, "On", SS_LEFT);
+    } else if (!planner.leveling_active) {
+      PSTRING_ITEM(MSG_BED_LEVELING, "Off", SS_LEFT);
+    } else if (!leveling_is_valid()) {
+      PSTRING_ITEM(MSG_BED_LEVELING, "Not valid!", SS_LEFT);
+    }
   #endif
 
   END_MENU();

@@ -219,9 +219,10 @@
       #warning "Note: Auto-assigned Y2 sensorless endstop to E7_DIAG_PIN. (Define NO_AUTO_ASSIGN_WARNING to suppress this warning.)"
     #endif
   #endif
-  #if AUTO_ASSIGNED_Z2_STEPPER
+  // cimo +
+  /*#if AUTO_ASSIGNED_Z2_STEPPER
     #warning "Note: Auto-assigned Z2 STEP/DIR/ENABLE_PINs to unused En_STEP/DIR/ENABLE_PINs. (Define NO_AUTO_ASSIGN_WARNING to suppress this warning.)"
-  #endif
+  #endif*/
   #if AUTO_ASSIGNED_Z2_MS1
     #warning "Note: Auto-assigned Z2_MS1_PIN to an unused En_MS1_PIN. (Define NO_AUTO_ASSIGN_WARNING to suppress this warning.)"
   #endif

@@ -221,6 +221,9 @@ public:
  *     There's no extra effect if you have a fixed Z probe.
  */
 G29_TYPE GcodeSuite::G29() {
+  // cimo +
+  ui.return_to_status();
+  ui.refresh();
 
   DEBUG_SECTION(log_G29, "G29", DEBUGGING(LEVELING));
 

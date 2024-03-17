@@ -75,6 +75,9 @@
  *   R                 Flag to recalculate points based on current probe offsets
  */
 void GcodeSuite::G34() {
+  // cimo +
+  ui.return_to_status();
+  ui.refresh();
 
   DEBUG_SECTION(log_G34, "G34", DEBUGGING(LEVELING));
   if (DEBUGGING(LEVELING)) log_machine_info();

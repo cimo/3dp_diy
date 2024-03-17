@@ -121,7 +121,7 @@
 
 // Name displayed in the LCD "Ready" message and Info menu
 // cimo +
-#define CUSTOM_MACHINE_NAME "3dp_diy"
+#define CUSTOM_MACHINE_NAME "3DP DIY"
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
@@ -1244,7 +1244,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 97.10 } //97.10
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 100 } //97.10
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
@@ -1272,7 +1272,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_ACCELERATION      { 6000, 6000, 100, 10000 }
+#define DEFAULT_MAX_ACCELERATION      { 3000, 3000, 100, 10000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
@@ -1289,7 +1289,7 @@
  *   M204 T    Travel Acceleration
  */
 // cimo +
-#define DEFAULT_ACCELERATION          6000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_ACCELERATION          3000    // X, Y, Z and E acceleration for printing moves
 #define DEFAULT_RETRACT_ACCELERATION  3000    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   3000    // X, Y, Z acceleration for travel (non printing) moves
 
@@ -1600,7 +1600,7 @@
  *     O-- FRONT --+
  */
 // cimo +
-#define NOZZLE_TO_PROBE_OFFSET { 0, -28.0, 0 } // Paper height => 0.07 (-2.65)
+#define NOZZLE_TO_PROBE_OFFSET { 0, -28.0, 0 } // Paper height => 0.07 (-2.53)
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
@@ -2466,8 +2466,8 @@
 
 // cimo +
 #define PREHEAT_2_LABEL         "PETG"
-#define PREHEAT_2_TEMP_HOTEND   275
-#define PREHEAT_2_TEMP_BED      85
+#define PREHEAT_2_TEMP_HOTEND   0
+#define PREHEAT_2_TEMP_BED      0
 #define PREHEAT_2_TEMP_CHAMBER  35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 

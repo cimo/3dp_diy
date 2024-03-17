@@ -695,10 +695,11 @@ void menu_advanced_settings() {
       }
     #endif
 
-    #if HAS_HOME_OFFSET
+    // cimo +
+    /*#if HAS_HOME_OFFSET
       // M428 - Set Home Offsets
       ACTION_ITEM(MSG_SET_HOME_OFFSETS, []{ queue.inject(F("M428")); ui.return_to_status(); });
-    #endif
+    #endif*/
 
     // M203 / M205 - Feedrate items
     SUBMENU(MSG_MAX_SPEED, menu_advanced_velocity);

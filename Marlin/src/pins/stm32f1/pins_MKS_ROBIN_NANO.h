@@ -30,7 +30,7 @@
 #include "env_validate.h"
 
 // cimo +
-#define BOARD_INFO_NAME "MKS Robin Nano V1.2"
+#define BOARD_INFO_NAME "MKS robin nano 1.2"
 
 //
 // Release PB4 (Y_ENABLE_PIN) from JTAG NRST role

@@ -2369,7 +2369,6 @@
  * Control extrusion rate based on instantaneous extruder velocity. Can be used to correct for
  * underextrusion at high extruder speeds that are otherwise well-behaved (i.e., not skipping).
  */
-// cimo +
 //#define NONLINEAR_EXTRUSION
 
 // @section leveling

@@ -2458,21 +2458,21 @@
 // Preheat Constants - Up to 10 are supported without changes
 //
 // cimo +
-#define PREHEAT_1_LABEL         "PLA"
-#define PREHEAT_1_TEMP_HOTEND   230
+#define PREHEAT_1_LABEL         "PLA (steel)"
+#define PREHEAT_1_TEMP_HOTEND   250
 #define PREHEAT_1_TEMP_BED      60
 #define PREHEAT_1_TEMP_CHAMBER  35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255
 
 // cimo +
-#define PREHEAT_2_LABEL         "PETG"
+#define PREHEAT_2_LABEL         "PETG (steel)"
 #define PREHEAT_2_TEMP_HOTEND   0
 #define PREHEAT_2_TEMP_BED      0
 #define PREHEAT_2_TEMP_CHAMBER  35
 #define PREHEAT_2_FAN_SPEED     0 // Value from 0 to 255
 
 // cimo +
-#define PREHEAT_3_LABEL         "TPU"
+#define PREHEAT_3_LABEL         "TPU (steel)"
 #define PREHEAT_3_TEMP_HOTEND   0
 #define PREHEAT_3_TEMP_BED      0
 #define PREHEAT_3_TEMP_CHAMBER  35

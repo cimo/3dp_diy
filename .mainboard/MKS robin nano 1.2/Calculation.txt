@@ -28,42 +28,43 @@ Prusa macro:
 	M593 F0 ; Disable input shaping
 	M205 J0 ; Disable junction deviation
 	M900 K0 ; Disable linear advance
-	M104 S{if layer_num >= 0 && layer_num < 26}240{endif}
-	M104 S{if layer_num >= 26 && layer_num < 51}245{endif}
+	M104 S{if layer_num >= 0 && layer_num < 26}230{endif}
+	M104 S{if layer_num >= 26 && layer_num < 51}240{endif}
 	M104 S{if layer_num >= 51 && layer_num < 76}250{endif}
-	M104 S{if layer_num >= 76 && layer_num < 101}255{endif}
-	M104 S{if layer_num >= 101 && layer_num < 126}260{endif}
-	M104 S{if layer_num >= 126}265{endif}
+	M104 S{if layer_num >= 76 && layer_num < 101}260{endif}
+	M104 S{if layer_num >= 101 && layer_num < 126}270{endif}
+	M104 S{if layer_num >= 126}280{endif}
 	; Test - Flow rate
 
 	; Test - Input shaping
+	M593 F0 ; Disable input shaping
 	M205 J0 ; Disable junction deviation
 	M900 K0 ; Disable linear advance
 	M593 X F{(layer_num < 1 ? 0 : 15 + 45.0 * (layer_num - 1) / 149)}
 	M593 Y F{(layer_num < 1 ? 0 : 15 + 45.0 * (layer_num - 1) / 149)}
 	{if layer_num >= 0 && layer_num < 26}
-	M593 X F37.3 D0.05
-	M593 Y F52.4 D0.05
+	;M593 X F37.3 D0.05
+	;M593 Y F52.4 D0.05
 	{endif}
 	{if layer_num >= 26 && layer_num < 51}
-	M593 X F37.3 D0.10
-	M593 Y F52.4 D0.10
+	;M593 X F37.3 D0.10
+	;M593 Y F52.4 D0.10
 	{endif}
 	{if layer_num >= 51 && layer_num < 76}
-	M593 X F37.3 D0.15
-	M593 Y F52.4 D0.15
+	;M593 X F37.3 D0.15
+	;M593 Y F52.4 D0.15
 	{endif}
 	{if layer_num >= 76 && layer_num < 101}
-	M593 X F37.3 D0.20
-	M593 Y F52.4 D0.20
+	;M593 X F37.3 D0.20
+	;M593 Y F52.4 D0.20
 	{endif}
 	{if layer_num >= 101 && layer_num < 126}
-	M593 X F37.3 D0.25
-	M593 Y F52.4 D0.25
+	;M593 X F37.3 D0.25
+	;M593 Y F52.4 D0.25
 	{endif}
 	{if layer_num >= 126}
-	M593 X F37.3 D0.30
-	M593 Y F52.4 D0.30
+	;M593 X F37.3 D0.30
+	;M593 Y F52.4 D0.30
 	{endif}
 	; Test - Input shaping
 
@@ -79,11 +80,11 @@ Prusa macro:
 
 	; Test - Linear advance
 	M900 K{if layer_num >= 0 && layer_num < 26}0.05{endif}
-	M900 K{if layer_num >= 26 && layer_num < 51}0.07{endif}
-	M900 K{if layer_num >= 51 && layer_num < 76}0.09{endif}
-	M900 K{if layer_num >= 76 && layer_num < 101}0.011{endif}
-	M900 K{if layer_num >= 101 && layer_num < 126}0.013{endif}
-	M900 K{if layer_num >= 126}0.015{endif}
+	M900 K{if layer_num >= 26 && layer_num < 51}0.08{endif}
+	M900 K{if layer_num >= 51 && layer_num < 76}0.11{endif}
+	M900 K{if layer_num >= 76 && layer_num < 101}0.14{endif}
+	M900 K{if layer_num >= 101 && layer_num < 126}0.17{endif}
+	M900 K{if layer_num >= 126}0.20{endif}
 	; Test - Linear advance
 
 

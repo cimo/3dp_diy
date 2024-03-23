@@ -1,0 +1,98 @@
+Step X/Y:
+	- Motor step * Micro step / (Pulley pitch * Pulley teeth) = Step
+	200 * 16 / (2 * 20) = 80
+
+Step Z:
+	- Motor step * Micro step / Lead screw pitch = Step
+	200 * 16 / 8 = 400
+
+Step E:
+	- Gear ratio: 1 / 1 = 1
+	- Hobbed bolt:
+		Diameter: 10.9
+		Circumference: 10.9 * 3.1416 = 34.24344
+	- Motor step * Micro step * Gear ration / Hobbed bolt circumference = Step
+	200 * 16 * 1 / 34.24344 = 93.44
+
+TMC2209:
+	- VREF:
+		- Current A * Constant * Constant Ohm = V
+		1.7 * 8 * 0.11 = 1.496 -> 80% -> 1.1968
+	- IRMS:
+		- (Vref * Constant A) / Constant V = A -> mA
+		(1.1968 * 1.77) / 2.5 = 0.847 -> 847
+
+Prusa macro:
+	- After layer change G-code:
+	; Test - Flow rate
+	M593 F0 ; Disable input shaping
+	M205 J0 ; Disable junction deviation
+	M900 K0 ; Disable linear advance
+	M104 S{if layer_num >= 0 && layer_num < 26}240{endif}
+	M104 S{if layer_num >= 26 && layer_num < 51}245{endif}
+	M104 S{if layer_num >= 51 && layer_num < 76}250{endif}
+	M104 S{if layer_num >= 76 && layer_num < 101}255{endif}
+	M104 S{if layer_num >= 101 && layer_num < 126}260{endif}
+	M104 S{if layer_num >= 126}265{endif}
+	; Test - Flow rate
+
+	; Test - Input shaping
+	M205 J0 ; Disable junction deviation
+	M900 K0 ; Disable linear advance
+	M593 X F{(layer_num < 1 ? 0 : 15 + 45.0 * (layer_num - 1) / 149)}
+	M593 Y F{(layer_num < 1 ? 0 : 15 + 45.0 * (layer_num - 1) / 149)}
+	{if layer_num >= 0 && layer_num < 26}
+	M593 X F37.3 D0.05
+	M593 Y F52.4 D0.05
+	{endif}
+	{if layer_num >= 26 && layer_num < 51}
+	M593 X F37.3 D0.10
+	M593 Y F52.4 D0.10
+	{endif}
+	{if layer_num >= 51 && layer_num < 76}
+	M593 X F37.3 D0.15
+	M593 Y F52.4 D0.15
+	{endif}
+	{if layer_num >= 76 && layer_num < 101}
+	M593 X F37.3 D0.20
+	M593 Y F52.4 D0.20
+	{endif}
+	{if layer_num >= 101 && layer_num < 126}
+	M593 X F37.3 D0.25
+	M593 Y F52.4 D0.25
+	{endif}
+	{if layer_num >= 126}
+	M593 X F37.3 D0.30
+	M593 Y F52.4 D0.30
+	{endif}
+	; Test - Input shaping
+
+	; Test - Junction deviation
+	M900 K0 ; Disable linear advance
+	M205 J{if layer_num >= 0 && layer_num < 26}0.010{endif}
+	M205 J{if layer_num >= 26 && layer_num < 51}0.014{endif}
+	M205 J{if layer_num >= 51 && layer_num < 76}0.018{endif}
+	M205 J{if layer_num >= 76 && layer_num < 101}0.022{endif}
+	M205 J{if layer_num >= 101 && layer_num < 126}0.026{endif}
+	M205 J{if layer_num >= 126}0.030{endif}
+	; Test - Junction deviation
+
+	; Test - Linear advance
+	M900 K{if layer_num >= 0 && layer_num < 26}0.05{endif}
+	M900 K{if layer_num >= 26 && layer_num < 51}0.07{endif}
+	M900 K{if layer_num >= 51 && layer_num < 76}0.09{endif}
+	M900 K{if layer_num >= 76 && layer_num < 101}0.011{endif}
+	M900 K{if layer_num >= 101 && layer_num < 126}0.013{endif}
+	M900 K{if layer_num >= 126}0.015{endif}
+	; Test - Linear advance
+
+
+;
+; MBL
+;
+M84 E ; turn off E motor
+G29 P1 ; invalidate mbl & probe print area
+G29 P1 X0 Y0 W50 H20 C ; probe near purge place
+G29 P3.2 ; interpolate mbl probes
+G29 P3.13 ; extrapolate mbl outside probe area
+G29 A ; activate mbl

@@ -21,12 +21,3 @@ TMC2209:
 	- IRMS:
 		- (Vref * Constant A) / Constant V = A -> mA
 		(1.1968 * 1.77) / 2.5 = 0.847 -> 847
-
----
-
-M84 E ; turn off E motor
-G29 P1 ; invalidate mbl & probe print area
-G29 P1 X0 Y0 W50 H20 C ; probe near purge place
-G29 P3.2 ; interpolate mbl probes
-G29 P3.13 ; extrapolate mbl outside probe area
-G29 A ; activate mbl

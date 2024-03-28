@@ -296,7 +296,6 @@
 G29_parameters_t unified_bed_leveling::param;
 
 void unified_bed_leveling::G29() {
-
   bool probe_deployed = false;
   if (G29_parse_parameters()) return; // Abort on parameter error
 
@@ -305,6 +304,10 @@ void unified_bed_leveling::G29() {
 
   // Check for commands that require the printer to be homed
   if (may_move) {
+    // cimo +
+    ui.return_to_status();
+    ui.refresh();
+    
     planner.synchronize();
     #if ALL(DWIN_LCD_PROUI, ZHOME_BEFORE_LEVELING)
       save_ubl_active_state_and_disable();

@@ -669,7 +669,7 @@ void menu_configuration() {
   #endif
 
   // cimo +
-  STATIC_ITEM_F(F("   ---"), SS_LEFT);
+  STATIC_ITEM_F(F("  ---"), SS_LEFT);
 
   // cimo +
   #if ENABLED(EEPROM_SETTINGS)

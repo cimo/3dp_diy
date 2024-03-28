@@ -219,13 +219,14 @@
 #endif
 
 #if !defined(REMAINING_TIME_W) && !defined(REMAINING_TIME_H) && !defined(REMAINING_TIME_X) && !defined(REMAINING_TIME_Y)
-  #if ALL(SHOW_ELAPSED_TIME, SHOW_REMAINING_TIME)
+  // cimo +
+  /*#if ALL(SHOW_ELAPSED_TIME, SHOW_REMAINING_TIME)
     #define REMAINING_TIME_W        164
     #define REMAINING_TIME_X        (TFT_WIDTH / 2)
-  #elif ENABLED(SHOW_REMAINING_TIME)
+  #elif ENABLED(SHOW_REMAINING_TIME)*/
     #define REMAINING_TIME_W        288
     #define REMAINING_TIME_X        (TFT_WIDTH - REMAINING_TIME_W) / 2
-  #endif
+  //#endif
 
   #define REMAINING_TIME_H          29
   #define REMAINING_TIME_Y          224

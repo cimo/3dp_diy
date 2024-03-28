@@ -7,9 +7,9 @@ M420 S1 ; Enable mesh bed leveling
 M569 S0 E ; Spreadcycle mode for extruder
 G0 X0.0 Y0.0 F2400 ; Move to point 0
 M140 S60 ; Start heating bed
-M104 S250 ; Start heating extruder
+M104 S210 ; Start heating extruder
 M190 S60 ; Wait heating bed
-M109 S250 ; Wait heating extruder
+M109 S210 ; Wait heating extruder
 G92 E0 ; Reset extruder
 G1 Z0.3 E15 F1200 ; Move to layer height and extrude material
 G0 X2.0 Y0.0 F1200 ; Move to point 1

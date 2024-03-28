@@ -182,7 +182,8 @@ void _lcd_ubl_edit_mesh() {
   GCODES_ITEM(MSG_UBL_FINE_TUNE_ALL, F("G29P4RT"));
   GCODES_ITEM(MSG_UBL_FINE_TUNE_CLOSEST, F("G29P4T"));
   SUBMENU(MSG_UBL_MESH_HEIGHT_ADJUST, _menu_ubl_height_adjust);
-  ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
+  // cimo +
+  //ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
   END_MENU();
 }
 
@@ -314,7 +315,8 @@ void _lcd_ubl_invalidate() {
 void _lcd_ubl_build_mesh() {
   START_MENU();
   BACK_ITEM(MSG_UBL_TOOLS);
-  #if HAS_PREHEAT
+  // cimo +
+  /*#if HAS_PREHEAT
     #define PREHEAT_BED_GCODE(M) TERN(HAS_HEATED_BED, "M190I" STRINGIFY(M) "\n", "")
     #define BUILD_MESH_GCODE_ITEM(M) GCODES_ITEM_f(ui.get_preheat_label(M), MSG_UBL_BUILD_MESH_M, \
       F( \
@@ -326,15 +328,18 @@ void _lcd_ubl_build_mesh() {
         "M140S0" \
       ) );
     REPEAT(PREHEAT_COUNT, BUILD_MESH_GCODE_ITEM)
-  #endif // HAS_PREHEAT
+  #endif // HAS_PREHEAT*/
 
-  SUBMENU(MSG_UBL_BUILD_CUSTOM_MESH, _lcd_ubl_custom_mesh);
+  // cimo +
+  //SUBMENU(MSG_UBL_BUILD_CUSTOM_MESH, _lcd_ubl_custom_mesh);
   GCODES_ITEM(MSG_UBL_BUILD_COLD_MESH, F("G29NP1"));
-  SUBMENU(MSG_UBL_FILLIN_MESH, _menu_ubl_fillin);
-  GCODES_ITEM(MSG_UBL_CONTINUE_MESH, F("G29P1C"));
+  // cimo +
+  //SUBMENU(MSG_UBL_FILLIN_MESH, _menu_ubl_fillin);
+  //GCODES_ITEM(MSG_UBL_CONTINUE_MESH, F("G29P1C"));
   ACTION_ITEM(MSG_UBL_INVALIDATE_ALL, _lcd_ubl_invalidate);
-  GCODES_ITEM(MSG_UBL_INVALIDATE_CLOSEST, F("G29I"));
-  ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
+  // cimo +
+  //GCODES_ITEM(MSG_UBL_INVALIDATE_CLOSEST, F("G29I"));
+  //ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
   END_MENU();
 }
 
@@ -545,7 +550,8 @@ void _menu_ubl_tools() {
   START_MENU();
   BACK_ITEM(MSG_UBL_LEVELING);
   SUBMENU(MSG_UBL_BUILD_MESH_MENU, _lcd_ubl_build_mesh);
-  GCODES_ITEM(MSG_UBL_MANUAL_MESH, F("G29I999\nG29P2BT0"));
+  // cimo +
+  //GCODES_ITEM(MSG_UBL_MANUAL_MESH, F("G29I999\nG29P2BT0"));
   #if ENABLED(G26_MESH_VALIDATION)
     SUBMENU(MSG_UBL_VALIDATE_MESH_MENU, _lcd_ubl_validate_mesh);
   #endif
@@ -616,13 +622,15 @@ void _menu_ubl_tools() {
 
     EDIT_ITEM(int3, MSG_UBL_STORAGE_SLOT, &ubl_storage_slot, 0, total_slots);
 
-    ACTION_ITEM(MSG_UBL_MESH_WIZARD, _lcd_ubl_mesh_wizard);
+    // cimo +
+    //ACTION_ITEM(MSG_UBL_MESH_WIZARD, _lcd_ubl_mesh_wizard);
 
     #if ENABLED(G26_MESH_VALIDATION)
       SUBMENU(MSG_UBL_VALIDATE_MESH_MENU, _lcd_ubl_validate_mesh);
     #endif
 
-    ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
+    // cimo +
+    //ACTION_ITEM(MSG_INFO_SCREEN, ui.return_to_status);
     END_MENU();
   }
 
@@ -658,11 +666,17 @@ void _lcd_ubl_level_bed() {
   #if ENABLED(UBL_MESH_WIZARD)
     SUBMENU(MSG_UBL_MESH_WIZARD, _menu_ubl_mesh_wizard);
   #endif
+  // cimo +
+  GCODES_ITEM(MSG_UBL_BUILD_COLD_MESH, F("G29NP1"));
+  GCODES_ITEM(MSG_UBL_SMART_FILLIN, F("G29P3T0"));
   ACTION_ITEM(MSG_UBL_MESH_EDIT, _ubl_goto_map_screen);
   SUBMENU(MSG_UBL_STORAGE_MESH_MENU, _lcd_ubl_storage_mesh);
-  SUBMENU(MSG_UBL_OUTPUT_MAP, _lcd_ubl_output_map);
-  SUBMENU(MSG_UBL_TOOLS, _menu_ubl_tools);
-  GCODES_ITEM(MSG_UBL_INFO_UBL, F("G29W"));
+  //SUBMENU(MSG_UBL_OUTPUT_MAP, _lcd_ubl_output_map);
+  //SUBMENU(MSG_UBL_TOOLS, _menu_ubl_tools);
+  //GCODES_ITEM(MSG_UBL_INFO_UBL, F("G29W"));
+  STATIC_ITEM_F(F("  ---"), SS_LEFT);
+  ACTION_ITEM(MSG_UBL_INVALIDATE_ALL, _lcd_ubl_invalidate);
+
   END_MENU();
 }
 

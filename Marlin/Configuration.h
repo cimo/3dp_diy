@@ -1257,12 +1257,12 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 40, 120 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 40, 240 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
   // cimo +
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 80, 240 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 80, 480 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1272,12 +1272,12 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_ACCELERATION      { 4000, 4000, 200, 2500 }
+#define DEFAULT_MAX_ACCELERATION      { 4000, 4000, 200, 4000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
   // cimo +
-  #define MAX_ACCEL_EDIT_VALUES       { 8000, 8000, 400, 5000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 8000, 8000, 400, 8000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1290,7 +1290,7 @@
  */
 // cimo +
 #define DEFAULT_ACCELERATION          4000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  1200    // E acceleration for retracts
+#define DEFAULT_RETRACT_ACCELERATION  4000    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   4000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
@@ -1380,7 +1380,8 @@
  *    - Normally-closed (NC) also connect to GND.
  *    - Normally-open (NO) also connect to 5V.
  */
-//#define Z_MIN_PROBE_PIN -1
+// cimo +
+//#define Z_MIN_PROBE_PIN Z_MIN_PIN
 
 /**
  * Probe Type
@@ -1525,6 +1526,7 @@
  * CAUTION: This can damage machines with Z lead screws.
  *          Take extreme care when setting up this feature.
  */
+// cimo +
 //#define SENSORLESS_PROBING
 
 /**
@@ -1600,7 +1602,7 @@
  *     O-- FRONT --+
  */
 // cimo +
-#define NOZZLE_TO_PROBE_OFFSET { 0, -28.0, 0 } // Paper height => 0.07 (-2.53)
+#define NOZZLE_TO_PROBE_OFFSET { 0, -28.0, -2.73 } // Paper height => 0.07
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
@@ -1867,7 +1869,7 @@
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
 // cimo +
-#define Z_MAX_POS 240
+#define Z_MAX_POS 230
 //#define I_MIN_POS 0
 //#define I_MAX_POS 50
 //#define J_MIN_POS 0
@@ -2079,10 +2081,9 @@
  */
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
+//#define AUTO_BED_LEVELING_BILINEAR
 // cimo +
-#define AUTO_BED_LEVELING_BILINEAR
-//#define AUTO_BED_LEVELING_UBL
-// cimo +
+#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
 /**
@@ -2162,7 +2163,7 @@
 
   // Set the number of grid points per dimension.
   // cimo +
-  #define GRID_MAX_POINTS_X 4
+  #define GRID_MAX_POINTS_X 5
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
@@ -2199,7 +2200,7 @@
   
   // cimo +
   #define MESH_INSET 5              // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 4      // Don't use more than 15 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 5       // Don't use more than 15 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define UBL_HILBERT_CURVE       // Use Hilbert distribution for less travel when probing multiple points
@@ -2242,7 +2243,7 @@
 
   // cimo +
   #define MESH_INSET 5          // Set Mesh bounds as an inset region of the bed
-  #define GRID_MAX_POINTS_X 4    // Don't use more than 7 points per axis, implementation limited.
+  #define GRID_MAX_POINTS_X 5    // Don't use more than 7 points per axis, implementation limited.
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   //#define MESH_G28_REST_ORIGIN // After homing all axes ('G28' or 'G28 XYZ') rest Z at Z_MIN_POS
@@ -2310,8 +2311,8 @@
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
 // cimo +
-//#define MANUAL_X_HOME_POS 1
-//#define MANUAL_Y_HOME_POS 1
+//#define MANUAL_X_HOME_POS 0
+//#define MANUAL_Y_HOME_POS 0
 //#define MANUAL_Z_HOME_POS 0
 //#define MANUAL_I_HOME_POS 0
 //#define MANUAL_J_HOME_POS 0
@@ -2338,8 +2339,7 @@
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
-// cimo +
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (8*60) }
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS
@@ -2459,7 +2459,7 @@
 //
 // cimo +
 #define PREHEAT_1_LABEL         "PLA (steel)"
-#define PREHEAT_1_TEMP_HOTEND   250
+#define PREHEAT_1_TEMP_HOTEND   210
 #define PREHEAT_1_TEMP_BED      60
 #define PREHEAT_1_TEMP_CHAMBER  35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255

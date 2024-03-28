@@ -336,13 +336,14 @@ void MarlinUI::draw_status_screen() {
 
   #if ENABLED(SHOW_ELAPSED_TIME)
     elapsed.toDigital(buffer);
-    tft.canvas(ELAPSED_TIME_X, ELAPSED_TIME_Y, ELAPSED_TIME_W, ELAPSED_TIME_H);
+    // cimo +
+    /*tft.canvas(ELAPSED_TIME_X, ELAPSED_TIME_Y, ELAPSED_TIME_W, ELAPSED_TIME_H);
     tft.set_background(COLOR_BACKGROUND);
     tft_string.set(buffer);
     #if defined(ELAPSED_TIME_IMAGE_X) && defined(ELAPSED_TIME_IMAGE_Y)
       tft.add_image(ELAPSED_TIME_IMAGE_X, ELAPSED_TIME_IMAGE_Y, imgTimeElapsed, COLOR_PRINT_TIME);
     #endif
-    tft.add_text(ELAPSED_TIME_TEXT_X, ELAPSED_TIME_TEXT_Y, COLOR_PRINT_TIME, tft_string);
+    tft.add_text(ELAPSED_TIME_TEXT_X, ELAPSED_TIME_TEXT_Y, COLOR_PRINT_TIME, tft_string);*/
   #endif
 
   #if ENABLED(SHOW_REMAINING_TIME)

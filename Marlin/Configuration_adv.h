@@ -929,7 +929,7 @@
 #define SENSORLESS_BACKOFF_MM  { 2, 2, 2 }  // (linear=mm, rotational=°) Backoff from endstops before sensorless homing
 
 // cimo+
-#define HOMING_BUMP_MM      { 5, 5, 2 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
+#define HOMING_BUMP_MM      { 0, 0, 0 }       // (linear=mm, rotational=°) Backoff from endstops after first bump
 #define HOMING_BUMP_DIVISOR { 2, 2, 4 }       // Re-Bump Speed Divisor (Divides the Homing Feedrate)
 
 //#define HOMING_BACKOFF_POST_MM { 2, 2, 2 }  // (linear=mm, rotational=°) Backoff from endstops after homing
@@ -1038,7 +1038,8 @@
    * If not defined, probe limits will be used.
    * Override with 'M422 S<index> X<pos> Y<pos>'.
    */
-  //#define Z_STEPPER_ALIGN_XY { {  10, 190 }, { 100,  10 }, { 190, 190 } }
+  // cimo +
+  #define Z_STEPPER_ALIGN_XY { {  5, (Y_BED_SIZE / 2) }, { (X_BED_SIZE - 6),  (Y_BED_SIZE / 2) } }
 
   /**
    * Orientation for the automatically-calculated probe positions.
@@ -1060,7 +1061,8 @@
    *               | 1   2 | 2   3 | 3   4 | 4   1 |
    */
   #ifndef Z_STEPPER_ALIGN_XY
-    //#define Z_STEPPERS_ORIENTATION 0
+    // cimo +
+    #define Z_STEPPERS_ORIENTATION 0
   #endif
 
   /**
@@ -1486,7 +1488,7 @@
 
 #if HAS_MANUAL_MOVE_MENU
   // cimo +
-  #define MANUAL_FEEDRATE { 50*60, 50*60, 8*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
+  #define MANUAL_FEEDRATE { 50*60, 50*60, 5*60, 2*60 } // (mm/min) Feedrates for manual moves along X, Y, Z, E from panel
   #define FINE_MANUAL_MOVE 0.01    // (mm) Smallest manual move (< 0.1mm) applying to Z on most machines
   #if IS_ULTIPANEL
     #define MANUAL_E_MOVES_RELATIVE // Display extruder move distance rather than "position"
@@ -3037,7 +3039,7 @@
   #if AXIS_IS_TMC_CONFIG(Y)
     #define Y_CURRENT       800
     // cimo +
-    #define Y_CURRENT_HOME  700
+    #define Y_CURRENT_HOME  500
     #define Y_MICROSTEPS    16
     #define Y_RSENSE        0.11
     #define Y_CHAIN_POS     -1
@@ -3463,13 +3465,13 @@
   #if ANY(SENSORLESS_HOMING, SENSORLESS_PROBING)
     // TMC2209: 0...255. TMC2130: -64...63
     // cimo +
-    #define X_STALL_SENSITIVITY  80
+    #define X_STALL_SENSITIVITY  85
     //#define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
     // cimo +
-    #define Y_STALL_SENSITIVITY  80
+    #define Y_STALL_SENSITIVITY  60
     //#define Y2_STALL_SENSITIVITY Y_STALL_SENSITIVITY
     // cimo +
-    #define Z_STALL_SENSITIVITY  60
+    #define Z_STALL_SENSITIVITY  100
     #define Z2_STALL_SENSITIVITY Z_STALL_SENSITIVITY
     //#define Z3_STALL_SENSITIVITY Z_STALL_SENSITIVITY
     //#define Z4_STALL_SENSITIVITY Z_STALL_SENSITIVITY

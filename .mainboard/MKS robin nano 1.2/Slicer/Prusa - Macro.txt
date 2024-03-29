@@ -3,12 +3,12 @@
 M593 F0 ; Disable input shaping
 M205 J0 ; Disable junction deviation
 M900 K0 ; Disable linear advance
-M104 S{if layer_num >= 0 && layer_num < 26}200{endif}
-M104 S{if layer_num >= 26 && layer_num < 51}210{endif}
-M104 S{if layer_num >= 51 && layer_num < 76}220{endif}
-M104 S{if layer_num >= 76 && layer_num < 101}230{endif}
-M104 S{if layer_num >= 101 && layer_num < 126}240{endif}
-M104 S{if layer_num >= 126}250{endif}
+M104 S{if layer_num >= 0 && layer_num < 26}220{endif}
+M104 S{if layer_num >= 26 && layer_num < 51}230{endif}
+M104 S{if layer_num >= 51 && layer_num < 76}240{endif}
+M104 S{if layer_num >= 76 && layer_num < 101}250{endif}
+M104 S{if layer_num >= 101 && layer_num < 126}260{endif}
+M104 S{if layer_num >= 126}270{endif}
 ; Test - Flow rate
 
 ; Test - Input shaping

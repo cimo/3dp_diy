@@ -1257,12 +1257,12 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 40, 240 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 10, 240 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
   // cimo +
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 80, 480 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 20, 480 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1272,12 +1272,12 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_ACCELERATION      { 4000, 4000, 200, 4000 }
+#define DEFAULT_MAX_ACCELERATION      { 4000, 4000, 50, 4000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
   // cimo +
-  #define MAX_ACCEL_EDIT_VALUES       { 8000, 8000, 400, 8000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 8000, 8000, 100, 8000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1621,7 +1621,7 @@
 
 // Feedrate (mm/min) for the first approach when double-probing (MULTIPLE_PROBING == 2)
 // cimo +
-#define Z_PROBE_FEEDRATE_FAST (4*60)
+#define Z_PROBE_FEEDRATE_FAST (5*60)
 
 // Feedrate (mm/min) for the "accurate" probe of each point
 #define Z_PROBE_FEEDRATE_SLOW (Z_PROBE_FEEDRATE_FAST / 2)
@@ -2311,8 +2311,8 @@
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
 // cimo +
-//#define MANUAL_X_HOME_POS 0
-//#define MANUAL_Y_HOME_POS 0
+#define MANUAL_X_HOME_POS -6
+#define MANUAL_Y_HOME_POS -2
 //#define MANUAL_Z_HOME_POS 0
 //#define MANUAL_I_HOME_POS 0
 //#define MANUAL_J_HOME_POS 0
@@ -2333,13 +2333,14 @@
 
 #if ENABLED(Z_SAFE_HOMING)
   // cimo +
-  #define Z_SAFE_HOMING_X_POINT 10  // (mm) X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 10  // (mm) Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 5  // (mm) X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 6  // (mm) Y point for Z homing
   //#define Z_SAFE_HOMING_POINT_ABSOLUTE  // Ignore home offsets (M206) for Z homing position
 #endif
 
 // Homing speeds (linear=mm/min, rotational=°/min)
-#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (4*60) }
+// cimo +
+#define HOMING_FEEDRATE_MM_M { (50*60), (50*60), (5*60) }
 
 // Validate that endstops are triggered on homing moves
 #define VALIDATE_HOMING_ENDSTOPS

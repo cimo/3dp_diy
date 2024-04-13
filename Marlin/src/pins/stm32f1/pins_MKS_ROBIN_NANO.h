@@ -40,10 +40,10 @@
 //
 // Thermocouples
 //
-//#define TEMP_0_CS_PIN                     PE5   // TC1 - CS1
-//#define TEMP_0_CS_PIN                     PE6   // TC2 - CS2
+//#define TEMP_0_CS_PIN                    PE5   // TC1 - CS1
+//#define TEMP_0_CS_PIN                    PE6   // TC2 - CS2
 
-//#define LED_PIN                           PB2
+//#define LED_PIN                          PB2
 
 #include "pins_MKS_ROBIN_NANO_common.h"
 
@@ -52,26 +52,26 @@
 #endif
 
 #if HAS_TMC_UART
-  #define X_SERIAL_TX_PIN                   PA10
-  #define X_SERIAL_RX_PIN                   PA10
+  #define X_SERIAL_TX_PIN                  PA10
+  #define X_SERIAL_RX_PIN                  PA10
 
-  #define Y_SERIAL_TX_PIN                   PA9
-  #define Y_SERIAL_RX_PIN                   PA9
+  #define Y_SERIAL_TX_PIN                  PA9
+  #define Y_SERIAL_RX_PIN                  PA9
 
-  #define Z_SERIAL_TX_PIN                   PC7
-  #define Z_SERIAL_RX_PIN                   PC7
+  #define Z_SERIAL_TX_PIN                  PC7
+  #define Z_SERIAL_RX_PIN                  PC7
 
-  #define E0_SERIAL_TX_PIN                  PA5
-  #define E0_SERIAL_RX_PIN                  PA5
+  #define E0_SERIAL_TX_PIN                 PA5
+  #define E0_SERIAL_RX_PIN                 PA5
 
   #ifdef Z2_DRIVER_TYPE
-    #define E1_SERIAL_TX_PIN                PC13
-    #define E1_SERIAL_RX_PIN                PC13
+    #define E1_SERIAL_TX_PIN               PC13
+    #define E1_SERIAL_RX_PIN               PC13
   #endif
 
   // Reduce baud rate to improve software serial reliability
   #ifndef TMC_BAUD_RATE
-    #define TMC_BAUD_RATE                   19200
+    #define TMC_BAUD_RATE                  19200
   #endif
 
 #endif // HAS_TMC_UART

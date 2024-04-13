@@ -560,7 +560,7 @@
 #define TEMP_SENSOR_6 0
 #define TEMP_SENSOR_7 0
 // cimo +
-#define TEMP_SENSOR_BED 1
+#define TEMP_SENSOR_BED 11
 #define TEMP_SENSOR_PROBE 0
 #define TEMP_SENSOR_CHAMBER 0
 #define TEMP_SENSOR_COOLER 0
@@ -588,16 +588,16 @@
 
 #if HAS_E_TEMP_SENSOR
   // cimo +
-  #define TEMP_RESIDENCY_TIME         3  // (seconds) Time to wait for hotend to "settle" in M109
+  #define TEMP_RESIDENCY_TIME          5  // (seconds) Time to wait for hotend to "settle" in M109
   #define TEMP_WINDOW                  1  // (°C) Temperature proximity for the "temperature reached" timer
-  #define TEMP_HYSTERESIS              5  // (°C) Temperature proximity considered "close enough" to the target
+  #define TEMP_HYSTERESIS              1  // (°C) Temperature proximity considered "close enough" to the target
 #endif
 
 #if TEMP_SENSOR_BED
   // cimo +
-  #define TEMP_BED_RESIDENCY_TIME     3  // (seconds) Time to wait for bed to "settle" in M190
+  #define TEMP_BED_RESIDENCY_TIME      5  // (seconds) Time to wait for bed to "settle" in M190
   #define TEMP_BED_WINDOW              1  // (°C) Temperature proximity for the "temperature reached" timer
-  #define TEMP_BED_HYSTERESIS          5  // (°C) Temperature proximity considered "close enough" to the target
+  #define TEMP_BED_HYSTERESIS          1  // (°C) Temperature proximity considered "close enough" to the target
 #endif
 
 #if TEMP_SENSOR_CHAMBER
@@ -1257,12 +1257,12 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 10, 240 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 10, 120 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
   // cimo +
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 20, 480 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 20, 240 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1272,12 +1272,12 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_ACCELERATION      { 4000, 4000, 50, 4000 }
+#define DEFAULT_MAX_ACCELERATION      { 5000, 5000, 50, 5000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
   // cimo +
-  #define MAX_ACCEL_EDIT_VALUES       { 8000, 8000, 100, 8000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 10000, 10000, 100, 10000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1289,9 +1289,9 @@
  *   M204 T    Travel Acceleration
  */
 // cimo +
-#define DEFAULT_ACCELERATION          4000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  4000    // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION   4000    // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION          5000    // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION  5000    // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION   5000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -1602,7 +1602,7 @@
  *     O-- FRONT --+
  */
 // cimo +
-#define NOZZLE_TO_PROBE_OFFSET { 0, -28.0, -2.73 } // Paper height => 0.07
+#define NOZZLE_TO_PROBE_OFFSET { 0, -28.0, -2.73 } // Paper height => 0.07 (2.93)
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
@@ -2460,7 +2460,7 @@
 //
 // cimo +
 #define PREHEAT_1_LABEL         "PLA (steel)"
-#define PREHEAT_1_TEMP_HOTEND   210
+#define PREHEAT_1_TEMP_HOTEND   220
 #define PREHEAT_1_TEMP_BED      60
 #define PREHEAT_1_TEMP_CHAMBER  35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255

@@ -3,19 +3,19 @@ G21 ; Set millimeter unit
 G90 ; Set all axes to absolute
 G28 ; Home all axes
 M413 S0 ; Disable power loss recovery
-M420 S1 ; Enable mesh bed leveling
+G29 A ; Enable mesh bed leveling
 M569 S0 E ; Spreadcycle mode for extruder
-G0 X0.0 Y0.0 F2400 ; Move to point 0
+G0 X0.0 Y0.0 F7500 ; Move to point 0
 M140 S60 ; Start heating bed
 M104 S250 ; Start heating extruder
 M190 S60 ; Wait heating bed
 M109 S250 ; Wait heating extruder
 G92 E0 ; Reset extruder
-G1 Z0.3 E15 F1200 ; Move to layer height and extrude material
-G0 X2.0 Y0.0 F1200 ; Move to point 1
-G1 X2.0 Y180.0 E30 F1200 ; Extrude material until point 2
-G0 X2.4 Y180.0 F1200 ; Move to point 3
-G1 X2.4 Y10.0 E45 F1200 ; Extrude material until point 4
+G1 Z0.3 E15 F600 ; Move to layer height and extrude material
+G0 X2.0 Y0.0 F7500 ; Move to point 1
+G1 X2.0 Y180.0 E30 F7500 ; Extrude material until point 2
+G0 X2.4 Y180.0 F7500 ; Move to point 3
+G1 X2.4 Y10.0 E45 F7500 ; Extrude material until point 4
 G92 E0 ; Reset extruder
 ; ---
 ;M593 F0 ; Disable input shaping
@@ -2633,9 +2633,9 @@ G1 E128.99
 M501 ; Load settings from EEPROM
 M900 K0 ; Disable linear advance
 G91 ; Set all axes to relative
-G0 Z10.0 F1200 ; Up Z axis
+G0 Z10.0 F600 ; Up Z axis
 G90 ; Set all axes to absolute
-G0 X0.0 Y0.0 F12000 ; Move to point 0
+G0 X0.0 Y0.0 F7500 ; Move to point 0
 G92 E0 ; Reset extruder
 M84 X Y Z E ; Turn off all motors
 M104 S0 ; Turn off extruder

@@ -14,6 +14,9 @@ Step E:
 	- Motor step * Micro step * Gear ration / Hobbed bolt circumference = Step
 	200 * 16 * 1 / 34.24344 = 93.44
 
+	- (100 / Measured) * Current step  = Step
+	- (100 / 103) / 690 = 670
+
 TMC2209:
 	- Stepper motor XYZ:
 		17HS19-2004S1
@@ -27,7 +30,7 @@ TMC2209:
 		Weight (Kg):			0.40
 	- Stepper motor E:
 		LDO-36STH20-1004AHG(XH)
-		Amps (A):				1.00
+		Amps (A):				1.20
 		Resistance (Ohms):		2.1
 		Inductance (mH):		1.6
 		Holding torque (Nm):	0.95
@@ -41,3 +44,11 @@ TMC2209:
 	- IRMS:
 		- (Vref * Constant A) / Constant V = A -> mA
 		(1.408 * 1.77) / 2.5 = 0.996864 -> 996 -> 990
+
+Hotend position:
+	- MANUAL_X_HOME_POS:
+		- (Bed size X / 2) - (Distance from start to center) = X
+		- (235 / 2) - 132 = -14.5
+	- MANUAL_Y_HOME_POS:
+		- (Bed size Y / 2) - (Distance from start to center) = Y
+		- (235 / 2) - 134 = -16.5

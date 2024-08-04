@@ -1244,7 +1244,7 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 93.44 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 680 }
 
 /**
  * Enable support for M92. Disable to save at least ~530 bytes of flash.
@@ -1257,12 +1257,12 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_FEEDRATE          { 300, 300, 10, 120 }
+#define DEFAULT_MAX_FEEDRATE          { 300, 300, 10, 125 }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
 #if ENABLED(LIMITED_MAX_FR_EDITING)
   // cimo +
-  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 20, 240 } // ...or, set your own edit limits
+  #define MAX_FEEDRATE_EDIT_VALUES    { 600, 600, 20, 250 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1272,12 +1272,12 @@
  *                                      X, Y, Z [, I [, J [, K...]]], E0 [, E1[, E2...]]
  */
 // cimo +
-#define DEFAULT_MAX_ACCELERATION      { 5000, 5000, 50, 5000 }
+#define DEFAULT_MAX_ACCELERATION      { 5000, 5000, 50, 8000 }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
   // cimo +
-  #define MAX_ACCEL_EDIT_VALUES       { 10000, 10000, 100, 10000 } // ...or, set your own edit limits
+  #define MAX_ACCEL_EDIT_VALUES       { 10000, 10000, 100, 16000 } // ...or, set your own edit limits
 #endif
 
 /**
@@ -1290,7 +1290,7 @@
  */
 // cimo +
 #define DEFAULT_ACCELERATION          5000    // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION  5000    // E acceleration for retracts
+#define DEFAULT_RETRACT_ACCELERATION  8000    // E acceleration for retracts
 #define DEFAULT_TRAVEL_ACCELERATION   5000    // X, Y, Z acceleration for travel (non printing) moves
 
 /**
@@ -1602,7 +1602,7 @@
  *     O-- FRONT --+
  */
 // cimo +
-#define NOZZLE_TO_PROBE_OFFSET { 0, -28.0, -2.73 } // Paper height => 0.07 (2.93)
+#define NOZZLE_TO_PROBE_OFFSET { 19.7, 5, -2.61 } // Height => -0.09
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0
@@ -1673,7 +1673,7 @@
  */
 // cimo +
 #define MULTIPLE_PROBING 2
-//#define EXTRA_PROBING    1
+//#define EXTRA_PROBING  1
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1690,7 +1690,7 @@
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
 // cimo +
-#define Z_CLEARANCE_DEPLOY_PROBE   5 // (mm) Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_DEPLOY_PROBE    5 // (mm) Z Clearance for Deploy/Stow
 #define Z_CLEARANCE_BETWEEN_PROBES  2 // (mm) Z Clearance between probe points
 #define Z_CLEARANCE_MULTI_PROBE     2 // (mm) Z Clearance between multiple probes
 #define Z_PROBE_ERROR_TOLERANCE     2 // (mm) Tolerance for early trigger (<= -probe.offset.z + ZPET)
@@ -1798,7 +1798,7 @@
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
 // cimo +
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -2310,9 +2310,8 @@
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-// cimo +
-#define MANUAL_X_HOME_POS -6
-#define MANUAL_Y_HOME_POS -2
+#define MANUAL_X_HOME_POS -13
+#define MANUAL_Y_HOME_POS -16
 //#define MANUAL_Z_HOME_POS 0
 //#define MANUAL_I_HOME_POS 0
 //#define MANUAL_J_HOME_POS 0
@@ -2333,8 +2332,8 @@
 
 #if ENABLED(Z_SAFE_HOMING)
   // cimo +
-  #define Z_SAFE_HOMING_X_POINT 5  // (mm) X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT 6  // (mm) Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT X_BED_SIZE / 2 // (mm) X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT Y_BED_SIZE / 2 // (mm) Y point for Z homing
   //#define Z_SAFE_HOMING_POINT_ABSOLUTE  // Ignore home offsets (M206) for Z homing position
 #endif
 
@@ -2460,7 +2459,7 @@
 //
 // cimo +
 #define PREHEAT_1_LABEL         "PLA (steel)"
-#define PREHEAT_1_TEMP_HOTEND   220
+#define PREHEAT_1_TEMP_HOTEND   210
 #define PREHEAT_1_TEMP_BED      60
 #define PREHEAT_1_TEMP_CHAMBER  35
 #define PREHEAT_1_FAN_SPEED     0 // Value from 0 to 255

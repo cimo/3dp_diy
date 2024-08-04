@@ -5,19 +5,20 @@ G28 ; Home all axes
 M413 S0 ; Disable power loss recovery
 G29 A ; Enable mesh bed leveling
 M569 S0 E ; Spreadcycle mode for extruder
-G0 X0.0 Y0.0 F7500 ; Move to point 0
+G0 X0.0 Y0.0 F3000 ; Move to point 0
+G92 E0 ; Reset extruder
 M140 S60 ; Start heating bed
 M104 S250 ; Start heating extruder
 M190 S60 ; Wait heating bed
 M109 S250 ; Wait heating extruder
-G92 E0 ; Reset extruder
-G1 Z0.3 E15 F600 ; Move to layer height and extrude material
-G0 X2.0 Y0.0 F7500 ; Move to point 1
-G1 X2.0 Y180.0 E30 F7500 ; Extrude material until point 2
-G0 X2.4 Y180.0 F7500 ; Move to point 3
-G1 X2.4 Y10.0 E45 F7500 ; Extrude material until point 4
+G1 Z0.2 E15 F600 ; Move to layer height and extrude material
+G0 X2.0 Y0.0 F3000 ; Move to point 1
+G1 X2.0 Y180.0 E30 F3000 ; Extrude material until point 2
+G0 X2.4 Y180.0 F3000 ; Move to point 3
+G1 X2.4 Y10.0 E45 F3000 ; Extrude material until point 4
 G92 E0 ; Reset extruder
 ; ---
+M117 Prepare
 ;M593 F0 ; Disable input shaping
 M900 K0 ; Disable linear advance
 ; draw anchor lines
@@ -29,11 +30,11 @@ G1 X49.90 Y185.10 Z0.20 E9.62 F2400.0
 G1 X49.90 Y49.90 Z0.20 E15.24 F2400.0
 G1 X54.90 Y49.90 Z0.20 E15.45
 M593 X D0.05
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X55.40 Y50.90 Z0.20 E15.50 F67.1
 G1 X54.90 Y51.90 Z0.20 E15.54 F134.2
 G1 X55.40 Y52.90 Z0.20 E15.59 F201.2
@@ -160,11 +161,11 @@ G1 X54.90 Y177.10 Z0.20 E21.33
 G0 X59.90 Y177.10 Z0.20 E21.33 F12000.0
 M593 X D0.10
 G1 X59.90 Y169.90 Z0.20 E21.63 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X60.40 Y168.90 Z0.20 E21.67 F8049.8
 G1 X59.90 Y167.90 Z0.20 E21.72 F7982.8
 G1 X60.40 Y166.90 Z0.20 E21.77 F7915.7
@@ -289,11 +290,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X64.90 Y49.90 Z0.20 E27.20 F12000.0
 M593 X D0.15
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X65.40 Y50.90 Z0.20 E27.25 F67.1
 G1 X64.90 Y51.90 Z0.20 E27.30 F134.2
 G1 X65.40 Y52.90 Z0.20 E27.34 F201.2
@@ -420,11 +421,11 @@ G1 X64.90 Y177.10 Z0.20 E33.08
 G0 X69.90 Y177.10 Z0.20 E33.08 F12000.0
 M593 X D0.20
 G1 X69.90 Y169.90 Z0.20 E33.38 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X70.40 Y168.90 Z0.20 E33.43 F8049.8
 G1 X69.90 Y167.90 Z0.20 E33.47 F7982.8
 G1 X70.40 Y166.90 Z0.20 E33.52 F7915.7
@@ -549,11 +550,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X74.90 Y49.90 Z0.20 E38.96 F12000.0
 M593 X D0.25
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X75.40 Y50.90 Z0.20 E39.01 F67.1
 G1 X74.90 Y51.90 Z0.20 E39.05 F134.2
 G1 X75.40 Y52.90 Z0.20 E39.10 F201.2
@@ -680,11 +681,11 @@ G1 X74.90 Y177.10 Z0.20 E44.84
 G0 X79.90 Y177.10 Z0.20 E44.84 F12000.0
 M593 X D0.30
 G1 X79.90 Y169.90 Z0.20 E45.14 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X80.40 Y168.90 Z0.20 E45.18 F8049.8
 G1 X79.90 Y167.90 Z0.20 E45.23 F7982.8
 G1 X80.40 Y166.90 Z0.20 E45.27 F7915.7
@@ -809,11 +810,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X84.90 Y49.90 Z0.20 E50.71 F12000.0
 M593 X D0.35
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X85.40 Y50.90 Z0.20 E50.76 F67.1
 G1 X84.90 Y51.90 Z0.20 E50.81 F134.2
 G1 X85.40 Y52.90 Z0.20 E50.85 F201.2
@@ -940,11 +941,11 @@ G1 X84.90 Y177.10 Z0.20 E56.59
 G0 X89.90 Y177.10 Z0.20 E56.59 F12000.0
 M593 X D0.40
 G1 X89.90 Y169.90 Z0.20 E56.89 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X90.40 Y168.90 Z0.20 E56.94 F8049.8
 G1 X89.90 Y167.90 Z0.20 E56.98 F7982.8
 G1 X90.40 Y166.90 Z0.20 E57.03 F7915.7
@@ -1069,11 +1070,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X94.90 Y49.90 Z0.20 E62.47 F12000.0
 M593 X D0.45
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X95.40 Y50.90 Z0.20 E62.51 F67.1
 G1 X94.90 Y51.90 Z0.20 E62.56 F134.2
 G1 X95.40 Y52.90 Z0.20 E62.61 F201.2
@@ -1200,11 +1201,11 @@ G1 X94.90 Y177.10 Z0.20 E68.34
 G0 X99.90 Y177.10 Z0.20 E68.34 F12000.0
 M593 X D0.50
 G1 X99.90 Y169.90 Z0.20 E68.64 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X100.40 Y168.90 Z0.20 E68.69 F8049.8
 G1 X99.90 Y167.90 Z0.20 E68.74 F7982.8
 G1 X100.40 Y166.90 Z0.20 E68.78 F7915.7
@@ -1329,11 +1330,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X104.90 Y49.90 Z0.20 E74.22 F12000.0
 M593 X D0.55
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X105.40 Y50.90 Z0.20 E74.27 F67.1
 G1 X104.90 Y51.90 Z0.20 E74.32 F134.2
 G1 X105.40 Y52.90 Z0.20 E74.36 F201.2
@@ -1460,11 +1461,11 @@ G1 X104.90 Y177.10 Z0.20 E80.10
 G0 X109.90 Y177.10 Z0.20 E80.10 F12000.0
 M593 X D0.60
 G1 X109.90 Y169.90 Z0.20 E80.40 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X110.40 Y168.90 Z0.20 E80.45 F8049.8
 G1 X109.90 Y167.90 Z0.20 E80.49 F7982.8
 G1 X110.40 Y166.90 Z0.20 E80.54 F7915.7
@@ -1589,11 +1590,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X114.90 Y49.90 Z0.20 E85.98 F12000.0
 M593 X D0.65
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X115.40 Y50.90 Z0.20 E86.02 F67.1
 G1 X114.90 Y51.90 Z0.20 E86.07 F134.2
 G1 X115.40 Y52.90 Z0.20 E86.12 F201.2
@@ -1720,11 +1721,11 @@ G1 X114.90 Y177.10 Z0.20 E91.85
 G0 X119.90 Y177.10 Z0.20 E91.85 F12000.0
 M593 X D0.70
 G1 X119.90 Y169.90 Z0.20 E92.15 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X120.40 Y168.90 Z0.20 E92.20 F8049.8
 G1 X119.90 Y167.90 Z0.20 E92.25 F7982.8
 G1 X120.40 Y166.90 Z0.20 E92.29 F7915.7
@@ -1849,11 +1850,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X124.90 Y49.90 Z0.20 E97.73 F12000.0
 M593 X D0.75
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X125.40 Y50.90 Z0.20 E97.78 F67.1
 G1 X124.90 Y51.90 Z0.20 E97.82 F134.2
 G1 X125.40 Y52.90 Z0.20 E97.87 F201.2
@@ -1980,11 +1981,11 @@ G1 X124.90 Y177.10 Z0.20 E103.61
 G0 X129.90 Y177.10 Z0.20 E103.61 F12000.0
 M593 X D0.80
 G1 X129.90 Y169.90 Z0.20 E103.91 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X130.40 Y168.90 Z0.20 E103.95 F8049.8
 G1 X129.90 Y167.90 Z0.20 E104.00 F7982.8
 G1 X130.40 Y166.90 Z0.20 E104.05 F7915.7
@@ -2109,11 +2110,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X134.90 Y49.90 Z0.20 E109.49 F12000.0
 M593 X D0.85
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X135.40 Y50.90 Z0.20 E109.53 F67.1
 G1 X134.90 Y51.90 Z0.20 E109.58 F134.2
 G1 X135.40 Y52.90 Z0.20 E109.63 F201.2
@@ -2240,11 +2241,11 @@ G1 X134.90 Y177.10 Z0.20 E115.36
 G0 X139.90 Y177.10 Z0.20 E115.36 F12000.0
 M593 X D0.90
 G1 X139.90 Y169.90 Z0.20 E115.66 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X140.40 Y168.90 Z0.20 E115.71 F8049.8
 G1 X139.90 Y167.90 Z0.20 E115.76 F7982.8
 G1 X140.40 Y166.90 Z0.20 E115.80 F7915.7
@@ -2369,11 +2370,11 @@ M201 X1000 Y1000
 M205 J0.014
 G0 X144.90 Y49.90 Z0.20 E121.24 F12000.0
 M593 X D0.95
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X145.40 Y50.90 Z0.20 E121.29 F67.1
 G1 X144.90 Y51.90 Z0.20 E121.33 F134.2
 G1 X145.40 Y52.90 Z0.20 E121.38 F201.2
@@ -2500,11 +2501,11 @@ G1 X144.90 Y177.10 Z0.20 E127.12
 G0 X149.90 Y177.10 Z0.20 E127.12 F12000.0
 M593 X D1.00
 G1 X149.90 Y169.90 Z0.20 E127.42 F8049.8
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X150.40 Y168.90 Z0.20 E127.46 F8049.8
 G1 X149.90 Y167.90 Z0.20 E127.51 F7982.8
 G1 X150.40 Y166.90 Z0.20 E127.56 F7915.7
@@ -2635,7 +2636,7 @@ M900 K0 ; Disable linear advance
 G91 ; Set all axes to relative
 G0 Z10.0 F600 ; Up Z axis
 G90 ; Set all axes to absolute
-G0 X0.0 Y0.0 F7500 ; Move to point 0
+G0 X0.0 Y0.0 F3000 ; Move to point 0
 G92 E0 ; Reset extruder
 M84 X Y Z E ; Turn off all motors
 M104 S0 ; Turn off extruder

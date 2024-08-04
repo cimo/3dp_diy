@@ -1041,7 +1041,7 @@
    * Override with 'M422 S<index> X<pos> Y<pos>'.
    */
   // cimo +
-  #define Z_STEPPER_ALIGN_XY { {  5, (Y_BED_SIZE / 2) }, { (X_BED_SIZE - 6),  (Y_BED_SIZE / 2) } }
+  #define Z_STEPPER_ALIGN_XY { {  23.7, (Y_BED_SIZE / 2) }, { (X_BED_SIZE - 23.7),  (Y_BED_SIZE / 2) } }
 
   /**
    * Orientation for the automatically-calculated probe positions.
@@ -3161,7 +3161,7 @@
   #endif
 
   #if AXIS_IS_TMC_CONFIG(E0)
-    #define E0_CURRENT      800
+    #define E0_CURRENT      850
     #define E0_MICROSTEPS    16
     #define E0_RSENSE         0.11
     #define E0_CHAIN_POS     -1
@@ -3472,7 +3472,7 @@
     #define X_STALL_SENSITIVITY  70
     //#define X2_STALL_SENSITIVITY X_STALL_SENSITIVITY
     // cimo +
-    #define Y_STALL_SENSITIVITY  70
+    #define Y_STALL_SENSITIVITY  50
     //#define Y2_STALL_SENSITIVITY Y_STALL_SENSITIVITY
     // cimo +
     #define Z_STALL_SENSITIVITY  140

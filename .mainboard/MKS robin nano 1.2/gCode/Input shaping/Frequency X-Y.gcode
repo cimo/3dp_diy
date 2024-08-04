@@ -5,19 +5,20 @@ G28 ; Home all axes
 M413 S0 ; Disable power loss recovery
 G29 A ; Enable mesh bed leveling
 M569 S0 E ; Spreadcycle mode for extruder
-G0 X0.0 Y0.0 F7500 ; Move to point 0
+G0 X0.0 Y0.0 F3000 ; Move to point 0
+G92 E0 ; Reset extruder
 M140 S60 ; Start heating bed
 M104 S250 ; Start heating extruder
 M190 S60 ; Wait heating bed
 M109 S250 ; Wait heating extruder
-G92 E0 ; Reset extruder
-G1 Z0.3 E15 F600 ; Move to layer height and extrude material
-G0 X2.0 Y0.0 F7500 ; Move to point 1
-G1 X2.0 Y180.0 E30 F7500 ; Extrude material until point 2
-G0 X2.4 Y180.0 F7500 ; Move to point 3
-G1 X2.4 Y10.0 E45 F7500 ; Extrude material until point 4
+G1 Z0.2 E15 F600 ; Move to layer height and extrude material
+G0 X2.0 Y0.0 F3000 ; Move to point 1
+G1 X2.0 Y180.0 E30 F3000 ; Extrude material until point 2
+G0 X2.4 Y180.0 F3000 ; Move to point 3
+G1 X2.4 Y10.0 E45 F3000 ; Extrude material until point 4
 G92 E0 ; Reset extruder
 ; ---
+M117 Prepare
 M593 F0 ; Disable input shaping
 M900 K0 ; Disable linear advance
 ; draw anchor lines
@@ -27,11 +28,11 @@ G0 X185.10 Y185.10 Z0.20 E0.00 F600.0
 G1 E4.00 F7200.0
 G1 X49.90 Y185.10 Z0.20 E9.62 F2400.0
 G1 X49.90 Y49.90 Z0.20 E15.24 F2400.0
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X50.90 Y50.40 Z0.20 E15.29 F67.1
 G1 X51.90 Y49.90 Z0.20 E15.33 F134.2
 G1 X52.90 Y50.40 Z0.20 E15.38 F201.2
@@ -155,11 +156,11 @@ G1 X169.90 Y49.90 Z0.20 E20.82 F8049.8
 M201 X1000 Y1000
 M205 J0.014
 G1 X177.10 Y49.90 Z0.20 E21.12
-M201 X10000 Y10000 ; max acceleration
-M203 X500 Y500 ; maximum feedrates
-M204 P10000 ; print acceleration
-M205 J0.3 ; junction deviation maximum
-M205 X500.00 Y500.00 ; jerk limits very high
+M201 X5000 Y5000 ; Set max acceleration
+M203 X300 Y300 ; Set max feedrate
+M204 S5000 ; Set default acceleration for print and travel
+M205 J0.3 ; Junction deviation
+M205 X500.00 Y500.00 ; Jerk limit
 G1 X177.60 Y50.90 Z0.20 E21.17 F67.1
 G1 X177.10 Y51.90 Z0.20 E21.21 F134.2
 G1 X177.60 Y52.90 Z0.20 E21.26 F201.2
@@ -290,7 +291,7 @@ M900 K0 ; Disable linear advance
 G91 ; Set all axes to relative
 G0 Z10.0 F600 ; Up Z axis
 G90 ; Set all axes to absolute
-G0 X0.0 Y0.0 F7500 ; Move to point 0
+G0 X0.0 Y0.0 F3000 ; Move to point 0
 G92 E0 ; Reset extruder
 M84 X Y Z E ; Turn off all motors
 M104 S0 ; Turn off extruder

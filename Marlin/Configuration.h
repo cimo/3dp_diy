@@ -1602,7 +1602,7 @@
  *     O-- FRONT --+
  */
 // cimo +
-#define NOZZLE_TO_PROBE_OFFSET { 19.7, 5, -2.61 } // Height => -0.09
+#define NOZZLE_TO_PROBE_OFFSET { 19.7, 5, -2.61 } // Height =>  -0.09
 
 // Enable and set to use a specific tool for probing. Disable to allow any tool.
 #define PROBING_TOOL 0

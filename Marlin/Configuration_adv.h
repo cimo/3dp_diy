@@ -1414,7 +1414,8 @@
  * vibration and surface artifacts. The algorithm adapts to provide the best possible step smoothing at the
  * lowest stepping frequencies.
  */
-//#define ADAPTIVE_STEP_SMOOTHING
+// cimo +
+#define ADAPTIVE_STEP_SMOOTHING
 
 /**
  * Custom Microstepping
@@ -2377,7 +2378,8 @@
  * Control extrusion rate based on instantaneous extruder velocity. Can be used to correct for
  * underextrusion at high extruder speeds that are otherwise well-behaved (i.e., not skipping).
  */
-//#define NONLINEAR_EXTRUSION
+// cimo +
+#define NONLINEAR_EXTRUSION
 
 // @section leveling
 

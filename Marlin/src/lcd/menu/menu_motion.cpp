@@ -508,6 +508,14 @@ void menu_motion() {
   #endif
 
   //
+  // Auto Z-Align
+  //
+  // cimo +
+  #if ANY(Z_STEPPER_AUTO_ALIGN, MECHANICAL_GANTRY_CALIBRATION)
+    GCODES_ITEM(MSG_AUTO_Z_ALIGN, F("G34"));
+  #endif
+
+  //
   // Level Bed
   //
   #if ENABLED(AUTO_BED_LEVELING_UBL)
@@ -550,13 +558,6 @@ void menu_motion() {
   //
   #if ENABLED(LCD_BED_TRAMMING) && DISABLED(LCD_BED_LEVELING)
     SUBMENU(MSG_BED_TRAMMING, _lcd_bed_tramming);
-  #endif
-
-  //
-  // Auto Z-Align
-  //
-  #if ANY(Z_STEPPER_AUTO_ALIGN, MECHANICAL_GANTRY_CALIBRATION)
-    GCODES_ITEM(MSG_AUTO_Z_ALIGN, F("G34"));
   #endif
 
   //
